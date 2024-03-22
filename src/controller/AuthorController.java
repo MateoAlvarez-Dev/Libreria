@@ -32,7 +32,6 @@ public class AuthorController {
         }
     }
 
-    //Método para listar todos los coder
     public void getAll() {
 
         String list = this.getAll(this.objAuthorModel.findAll());

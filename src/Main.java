@@ -23,7 +23,7 @@ public class Main {
                     """);
 
             switch (option){
-                case "1": //List All Coders
+                case "1":
                     String authorOption;
                     authorOption = JOptionPane.showInputDialog("""
                     MENU
@@ -36,7 +36,7 @@ public class Main {
                     """);
 
                     switch (authorOption){
-                        case "1": //List All Coders
+                        case "1":
                             objAuthorController.getAll();
                             break;
 
@@ -67,7 +67,7 @@ public class Main {
                     """);
 
                     switch (bookOption){
-                        case "1": //List All Coders
+                        case "1":
                             objBookController.getAll();
                             break;
 

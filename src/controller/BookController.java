@@ -32,7 +32,6 @@ public class BookController {
         }
     }
 
-    //Método para listar todos los coder
     public void getAll() {
 
         String list = this.getAll(this.objBookModel.findAll());
@@ -74,7 +73,7 @@ public class BookController {
 
         int idUpdate = Integer.parseInt(JOptionPane.showInputDialog(listBooks +" Enter the ID of the Book to edit"));
 
-                Book objBook = (Book) this.objBookModel.findById(idUpdate);
+        Book objBook = (Book) this.objBookModel.findById(idUpdate);
 
         if (objBook == null){
             JOptionPane.showMessageDialog(null, "Book not found.");
