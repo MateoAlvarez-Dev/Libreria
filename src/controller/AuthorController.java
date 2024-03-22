@@ -15,10 +15,10 @@ public class AuthorController {
     }
 
     public void delete() {
-        String listCoderString = this.getAll(this.objAuthorModel.findAll());
+        String listAuthorString = this.getAll(this.objAuthorModel.findAll());
 
         int confirm = 1;
-        int idDelete = Integer.parseInt(JOptionPane.showInputDialog(listCoderString + "Enter the ID of the author to delete"));
+        int idDelete = Integer.parseInt(JOptionPane.showInputDialog(listAuthorString + "Enter the ID of the author to delete"));
         Author objAuthor = (Author) this.objAuthorModel.findById(idDelete);
 
         if (objAuthor == null){
@@ -67,9 +67,9 @@ public class AuthorController {
     }
 
     public void update(){
-        String listCoders = this.getAll(this.objAuthorModel.findAll());
+        String listAuthors = this.getAll(this.objAuthorModel.findAll());
 
-        int idUpdate = Integer.parseInt(JOptionPane.showInputDialog(listCoders +"\nEnter the ID of the Author to edit"));
+        int idUpdate = Integer.parseInt(JOptionPane.showInputDialog(listAuthors +"\nEnter the ID of the Author to edit"));
 
         Author objAuthor = (Author) this.objAuthorModel.findById(idUpdate);
 
