@@ -184,12 +184,16 @@ public class BookModel implements CRUD {
         List bookList = new ArrayList<>();
 
         try {
-            String sql = "SELECT b.id, b.title, b.publication_year, b.price, b.idAuthor FROM books b WHERE b.title LIKE ? OR b.id = ?;";
+            // String sql = "SELECT b.id, b.title, b.publication_year, b.price, b.idAuthor FROM books b WHERE b.title LIKE ? OR b.id = ?;";
+
+            String sql = "SELECT b.id, b.title, b.publication_year, b.price, b.idAuthor FROM books b LEFT JOIN authors a ON a.id = b.idAuthor WHERE b.title LIKE ? OR b.id = ? OR a.name LIKE ?;";
 
             PreparedStatement objPrepare = objConnection.prepareStatement(sql);
 
             objPrepare.setString(1,"%" + term + "%");
             objPrepare.setString(2,term);
+            objPrepare.setString(3,"%" + term + "%");
+
 
             ResultSet objResult = objPrepare.executeQuery();
 

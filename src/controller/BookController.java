@@ -54,8 +54,8 @@ public class BookController {
 
     public void search(){
         String term = JOptionPane.showInputDialog(null,
-                "===BUSCADOR===\n"
-                + "Inserte el termino de busqueda"
+                "===SEARCH===\n"
+                + "Insert the search term, can be anything, like the Author's Name or the Book's id"
         );
 
         List books = this.objBookModel.search(term);
