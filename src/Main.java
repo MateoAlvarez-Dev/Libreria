@@ -62,8 +62,9 @@ public class Main {
                     2. Insert Book
                     3. Update Book
                     4. Delete Book
+                    5. Search Books
                     
-                    Choose an option: 
+                    Choose an option:
                     """);
 
                     switch (bookOption){
@@ -81,6 +82,10 @@ public class Main {
 
                         case "4":
                             objBookController.delete();
+                            break;
+
+                        case "5":
+                            objBookController.search();
                             break;
                     }
                     break;

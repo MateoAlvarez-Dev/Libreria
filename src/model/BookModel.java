@@ -177,4 +177,39 @@ public class BookModel implements CRUD {
 
         return objBook;
     }
+
+    public List search(String term) {
+
+        Connection objConnection = ConfigDB.openConnection();
+        List bookList = new ArrayList<>();
+
+        try {
+            String sql = "SELECT b.id, b.title, b.publication_year, b.price, b.idAuthor FROM books b WHERE b.title LIKE ? OR b.id = ?;";
+
+            PreparedStatement objPrepare = objConnection.prepareStatement(sql);
+
+            objPrepare.setString(1,"%" + term + "%");
+            objPrepare.setString(2,term);
+
+            ResultSet objResult = objPrepare.executeQuery();
+
+            while (objResult.next()){
+                Book objBook = null;
+                objBook = new Book();
+                objBook.setId(objResult.getInt("id"));
+                objBook.setTitle(objResult.getString("title"));
+                objBook.setPublication_year(objResult.getInt("publication_year"));
+                objBook.setPrice(objResult.getDouble("price"));
+                objBook.setIdAuthor(objResult.getInt("idAuthor"));
+                bookList.add(objBook);
+            }
+
+        }catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error while searching the book... " + e.getMessage());
+        }
+
+        ConfigDB.closeConnection();
+
+        return bookList;
+    }
 }

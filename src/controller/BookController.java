@@ -1,6 +1,7 @@
 package controller;
 
 import entity.Book;
+import model.AuthorModel;
 import model.BookModel;
 
 import javax.swing.*;
@@ -9,9 +10,11 @@ import java.util.List;
 public class BookController {
 
     BookModel objBookModel;
+    AuthorModel objAuthorModel;
 
     public BookController() {
         this.objBookModel = new BookModel();
+        this.objAuthorModel = new AuthorModel();
     }
 
     public void delete() {
@@ -47,6 +50,17 @@ public class BookController {
             list += objBook.getId() + " - " + objBook.getTitle() + " - " + objBook.getPublication_year() + " - " + objBook.getPrice() + " - " + objBook.getIdAuthor() + "\n";
         }
         return list;
+    }
+
+    public void search(){
+        String term = JOptionPane.showInputDialog(null,
+                "===BUSCADOR===\n"
+                + "Inserte el termino de busqueda"
+        );
+
+        List books = this.objBookModel.search(term);
+
+        JOptionPane.showMessageDialog(null, this.getAll(books));
     }
 
     public void create() {
